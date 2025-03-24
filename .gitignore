@@ -1,0 +1,50 @@
+# API Keys and Sensitive Information
+config.js
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Build output
+dist/
+build/
+out/
+
+# Cache directories
+.cache/
+.temp/
+.tmp/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Server files
+*.pid
+*.seed
+*.pid.lock 

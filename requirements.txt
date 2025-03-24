@@ -1,0 +1,15 @@
+# Web Development
+flask==3.0.2
+requests==2.31.0
+
+# Development Tools
+python-dotenv==1.0.1
+black==24.2.0
+flake8==7.0.0
+pytest==8.0.2
+
+# CORS Support (if needed)
+flask-cors==4.0.0
+
+# API Testing
+pytest-cov==4.1.0 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 class="logo">Weather</h1>
+    <div class="details-panel">
+        <div class="Navbar">
+            <div class="search-panel">
+                <div class="details">
+                    <h2>Search City</h2>
+                    <input type="text" name="cityname" id="searchbar" placeholder="City..">
+                    <button type="button" id="search-button">submit</button>
+                </div>
+            </div>
+            <div class="report-panel">
+                <div class="temperature-panel">
+                    <p id="city-temperature">Temp: </p>
+                </div>
+                <div class="pressure-panel">
+                    <p id="city-pressure">Pressure: </p>
+                </div>
+                <div class="humidity-panel">
+                    <p id="city-humidity">Humidity: </p>
+                </div>
+                <div class="description-panel">
+                    <p id="city-description"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="script.js"></script>    
+</body>
+</html>

@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+
+body {
+    height: 100vh;
+    background: url(./assets/amazon_rainforest.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    animation: fadeIn 1s ease-in;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+    50% {
+        transform: translate(-50%, -55%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+.details-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transform: translateX(-100%);
+    animation: slideIn 0.8s ease-out forwards;
+    z-index: 1000;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
+
+.Navbar {
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-panel {
+    margin-bottom: 3rem;
+}
+
+.details h2 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+}
+
+.details h2::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+.details h2:hover::after {
+    width: 100%;
+}
+
+#searchbar {
+    width: 100%;
+    height: 45px;
+    padding: 0 1.5rem;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    transform-origin: left;
+}
+
+#searchbar::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    transition: opacity 0.3s ease;
+}
+
+#searchbar:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+}
+
+#searchbar:focus::placeholder {
+    opacity: 0.5;
+}
+
+#search-button {
+    width: 100%;
+    height: 45px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#search-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+#search-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#search-button:hover::before {
+    left: 100%;
+}
+
+.report-panel {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out 0.6s forwards;
+}
+
+.temperature-panel, .humidity-panel, .pressure-panel, .description-panel {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: slideInRight 0.5s ease-out forwards;
+}
+
+.temperature-panel::before, .humidity-panel::before, .pressure-panel::before, .description-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.temperature-panel:hover, .humidity-panel:hover, .pressure-panel:hover, .description-panel:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+}
+
+.temperature-panel:hover::before, .humidity-panel:hover::before, .pressure-panel:hover::before, .description-panel:hover::before {
+    left: 100%;
+}
+
+.temperature-panel {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    animation-delay: 0.1s;
+}
+
+.humidity-panel { animation-delay: 0.2s; }
+.pressure-panel { animation-delay: 0.3s; }
+.description-panel { animation-delay: 0.4s; }
+
+.description-panel {
+    text-transform: capitalize;
+    font-style: italic;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .logo {
+        font-size: 4rem;
+    }
+
+    .details-panel {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .details h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    #searchbar {
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    #search-button {
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .report-panel {
+        padding: 1.5rem;
+    }
+
+    .temperature-panel {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .humidity-panel, .pressure-panel, .description-panel {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 3rem;
+    }
+
+    .details-panel {
+        padding: 1rem;
+    }
+
+    .details h2 {
+        font-size: 1.3rem;
+    }
+
+    #searchbar {
+        height: 35px;
+        font-size: 0.85rem;
+    }
+
+    #search-button {
+        height: 35px;
+        font-size: 0.85rem;
+    }
+
+    .report-panel {
+        padding: 1rem;
+    }
+
+    .temperature-panel {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .humidity-panel, .pressure-panel, .description-panel {
+        font-size: 0.9rem;
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* Handle very small screens */
+@media screen and (max-width: 320px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    .details h2 {
+        font-size: 1.2rem;
+    }
+
+    .temperature-panel {
+        font-size: 1.4rem;
+    }
+
+    .humidity-panel, .pressure-panel, .description-panel {
+        font-size: 0.85rem;
+    }
+}
+
+/* Handle landscape orientation on mobile */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .logo {
+        font-size: 3rem;
+        top: 30%;
+    }
+
+    .details-panel {
+        padding: 1rem;
+    }
+
+    .temperature-panel {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .humidity-panel, .pressure-panel, .description-panel {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
