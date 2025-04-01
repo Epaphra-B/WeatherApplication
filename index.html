@@ -3,36 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
+    <title>Weather Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1 class="logo">Weather</h1>
-    <div class="details-panel">
-        <div class="Navbar">
-            <div class="search-panel">
-                <div class="details">
-                    <h2>Search City</h2>
-                    <input type="text" name="cityname" id="searchbar" placeholder="City..">
-                    <button type="button" id="search-button">submit</button>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                <span>WeatherDash</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><a href="index.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="locations.html"><i class="fas fa-map-marker-alt"></i> Locations</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchbar" placeholder="Search city...">
+                    <button id="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell"></i>
+                    <div class="user-profile">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="weather-card main-card">
+                    <div class="weather-header">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="city-name">Search for a city</span>
+                        </div>
+                        <div class="date-time">
+                            <span id="current-date"></span>
+                            <span id="current-time"></span>
+                        </div>
+                    </div>
+
+                    <div class="current-weather">
+                        <div class="weather-main">
+                            <div class="weather-icon">
+                                <img src="" alt="Weather Icon" id="weather-icon">
+                            </div>
+                            <div class="temperature-container">
+                                <span class="temperature" id="temperature">--</span>
+                                <span class="unit">°C</span>
+                            </div>
+                            <div class="weather-description" id="weather-description">--</div>
+                        </div>
+
+                        <div class="weather-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-wind"></i>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="wind-speed">--</span>
+                                    <span class="stat-label">Wind Speed</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-tint"></i>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="humidity">--</span>
+                                    <span class="stat-label">Humidity</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-compress-arrows-alt"></i>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="pressure">--</span>
+                                    <span class="stat-label">Pressure</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-card graph-card">
+                    <div class="card-header">
+                        <h2>24-Hour Forecast</h2>
+                        <div class="card-actions">
+                            <button class="action-btn active">Temperature</button>
+                            <button class="action-btn">Humidity</button>
+                            <button class="action-btn">Wind</button>
+                        </div>
+                    </div>
+                    <div class="graph-container">
+                        <canvas id="weatherGraph"></canvas>
+                    </div>
+                </div>
+
+                <div class="weather-card forecast-card">
+                    <div class="card-header">
+                        <h2>5-Day Forecast</h2>
+                    </div>
+                    <div class="forecast-container" id="forecast-container">
+                        <!-- Forecast items will be added here -->
+                    </div>
+                </div>
+
+                <div class="weather-card details-card">
+                    <div class="card-header">
+                        <h2>Additional Details</h2>
+                    </div>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <i class="fas fa-sun"></i>
+                            <div class="detail-info">
+                                <span class="detail-label">Sunrise</span>
+                                <span class="detail-value" id="sunrise">--:--</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-moon"></i>
+                            <div class="detail-info">
+                                <span class="detail-label">Sunset</span>
+                                <span class="detail-value" id="sunset">--:--</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-eye"></i>
+                            <div class="detail-info">
+                                <span class="detail-label">Visibility</span>
+                                <span class="detail-value" id="visibility">-- km</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-cloud"></i>
+                            <div class="detail-info">
+                                <span class="detail-label">Clouds</span>
+                                <span class="detail-value" id="clouds">--%</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="report-panel">
-                <div class="temperature-panel">
-                    <p id="city-temperature">Temp: </p>
-                </div>
-                <div class="pressure-panel">
-                    <p id="city-pressure">Pressure: </p>
-                </div>
-                <div class="humidity-panel">
-                    <p id="city-humidity">Humidity: </p>
-                </div>
-                <div class="description-panel">
-                    <p id="city-description"></p>
-                </div>
-            </div>
-        </div>
+        </main>
     </div>
-    <script type="module" src="script.js"></script>    
+
+    <div class="loading-overlay">
+        <div class="loader"></div>
+        <p>Loading weather data...</p>
+    </div>
+
+    <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        <span id="error-text"></span>
+    </div>
+
+    <script type="module" src="script.js"></script>
 </body>
 </html>

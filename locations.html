@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Locations - Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                <span>WeatherDash</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li class="active"><a href="locations.html"><i class="fas fa-map-marker-alt"></i> Locations</a></li>
+                <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchbar" placeholder="Search city...">
+                    <button id="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell"></i>
+                    <div class="user-profile">
+                        <img src="https://via.placeholder.com/40" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="weather-card locations-card">
+                    <div class="card-header">
+                        <h2>Saved Locations</h2>
+                        <button class="add-location-btn">
+                            <i class="fas fa-plus"></i> Add Location
+                        </button>
+                    </div>
+                    <div class="locations-list" id="locations-list">
+                        <!-- Saved locations will be added here -->
+                    </div>
+                </div>
+
+                <div class="weather-card map-card">
+                    <div class="card-header">
+                        <h2>Location Map</h2>
+                    </div>
+                    <div class="map-container" id="map-container">
+                        <!-- Map will be added here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="loading-overlay">
+        <div class="loader"></div>
+        <p>Loading locations...</p>
+    </div>
+
+    <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        <span id="error-text"></span>
+    </div>
+
+    <script type="module" src="locations.js"></script>
+</body>
+</html> 

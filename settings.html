@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                <span>WeatherDash</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Overview</a></li>
+                <li><a href="locations.html"><i class="fas fa-map-marker-alt"></i> Locations</a></li>
+                <li class="active"><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchbar" placeholder="Search city...">
+                    <button id="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell"></i>
+                    <div class="user-profile">
+                        <img src="https://via.placeholder.com/40" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="weather-card settings-card">
+                    <div class="card-header">
+                        <h2>App Settings</h2>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Theme</h3>
+                        <div class="setting-item">
+                            <label>Dark Mode</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="dark-mode-toggle">
+                                <span class="slider"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>Units</h3>
+                        <div class="setting-item">
+                            <label>Temperature Unit</label>
+                            <select id="temp-unit">
+                                <option value="metric">Celsius (°C)</option>
+                                <option value="imperial">Fahrenheit (°F)</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>Wind Speed Unit</label>
+                            <select id="wind-unit">
+                                <option value="m/s">Meters per second (m/s)</option>
+                                <option value="mph">Miles per hour (mph)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>Notifications</h3>
+                        <div class="setting-item">
+                            <label>Weather Alerts</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="weather-alerts">
+                                <span class="slider"></span>
+                            </div>
+                        </div>
+                        <div class="setting-item">
+                            <label>Daily Forecast</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="daily-forecast">
+                                <span class="slider"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h3>Data Management</h3>
+                        <div class="setting-item">
+                            <label>Clear Saved Locations</label>
+                            <button class="danger-btn" id="clear-locations">
+                                <i class="fas fa-trash"></i> Clear All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="loading-overlay">
+        <div class="loader"></div>
+        <p>Saving settings...</p>
+    </div>
+
+    <div class="error-message">
+        <i class="fas fa-exclamation-circle"></i>
+        <span id="error-text"></span>
+    </div>
+
+    <script type="module" src="settings.js"></script>
+</body>
+</html> 
